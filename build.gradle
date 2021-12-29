@@ -15,8 +15,19 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+def mainClassName = 'dev.confreloader.App'
+
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes "Main-Class": mainClassName
+    }
+}
+
 application {
-    mainClass = 'dev.confreloader.App'
+    mainClass = mainClassName
 }
 
 sourceSets {
