@@ -4,6 +4,7 @@ Java conf reloader demo, loading changes from conf file without app restart
 ## run
 
 First copy conf file:
+
     cp src/main/resources/config.properties ./config.properties
 
 Then execute app as described below and try to change the values in conf file.
