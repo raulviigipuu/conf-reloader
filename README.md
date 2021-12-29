@@ -25,3 +25,10 @@ Env:
 
 Command line arg:
     java -jar build/libs/conf-reloader.jar --conf=./config.properties
+
+
+## configuration loading order
+
+    From environment variable (APP_CONF)
+    From command line argument(--conf)
+    From default location(resources)
