@@ -34,6 +34,6 @@ Command line arg:
 
 ## configuration loading order
 
-    From environment variable (APP_CONF)
-    From command line argument(--conf)
-    From default location(resources)
+ - From environment variable (APP_CONF)
+ - From command line argument(--conf)
+ - From default location(resources)
