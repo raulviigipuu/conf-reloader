@@ -51,6 +51,12 @@ public class ConfigChangeListener implements Runnable {
 
 			try {
 				watchKey = watchService.take();
+
+				// Prevent receiving two separate ENTRY_MODIFY events: file modified
+				// and timestamp updated. Instead, receive one ENTRY_MODIFY event
+				// with two counts.
+				Thread.sleep(50);
+
 				for (WatchEvent<?> watchEvent : watchKey.pollEvents()) {
 					if (watchEvent.context().toString().equals(configFileName)) {
 						confChanged(filePath);
