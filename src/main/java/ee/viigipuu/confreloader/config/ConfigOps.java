@@ -1,4 +1,4 @@
-package dev.confreloader.config;
+package ee.viigipuu.confreloader.config;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

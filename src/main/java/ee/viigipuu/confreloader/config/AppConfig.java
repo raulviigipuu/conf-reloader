@@ -1,4 +1,4 @@
-package dev.confreloader.config;
+package ee.viigipuu.confreloader.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;

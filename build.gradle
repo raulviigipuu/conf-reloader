@@ -15,7 +15,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
-def mainClassName = 'dev.confreloader.App'
+def mainClassName = 'ee.viigipuu.confreloader.App'
 
 jar {
     from {

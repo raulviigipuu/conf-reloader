@@ -1,12 +1,12 @@
-package dev.confreloader;
+package ee.viigipuu.confreloader;
 
 import java.nio.file.Path;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dev.confreloader.config.ConfigChangeListener;
-import dev.confreloader.config.ConfigOps;
+import ee.viigipuu.confreloader.config.ConfigChangeListener;
+import ee.viigipuu.confreloader.config.ConfigOps;
 
 public class App {
 

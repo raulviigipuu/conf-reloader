@@ -1,4 +1,4 @@
-package dev.confreloader;
+package ee.viigipuu.confreloader;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
