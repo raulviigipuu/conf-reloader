@@ -32,6 +32,9 @@ Command line arg:
     java -jar build/libs/conf-reloader.jar --conf=./config.properties
 
 
+### dependency updates
+    gradle dependencyUpdates
+
 ## configuration loading order
 
  - From environment variable (APP_CONF)
