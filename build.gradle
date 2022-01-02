@@ -38,6 +38,6 @@ sourceSets {
   }
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
