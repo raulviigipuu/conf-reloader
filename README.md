@@ -13,7 +13,14 @@ Then execute app as described below and try to change the values in conf file.
 
 Env:
 
+Linux:
+
     export APP_CONF=./config.properties ; ./gradlew run
+
+Win CMD:
+
+    set APP_CONF=.\config.properties
+    gradlew.bat run
 
 Command line arg:
 
@@ -30,6 +37,14 @@ Env:
 Command line arg:
 
     java -jar build/libs/conf-reloader.jar --conf=./config.properties
+
+### line count
+
+    ./gradlew lineCount
+
+### Dependency updates
+
+    ./gradlew dependencyUpdates
 
 ## configuration loading order
 

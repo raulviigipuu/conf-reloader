@@ -1,0 +1,15 @@
+pluginManagement {
+    apply from: 'versions.gradle'
+    resolutionStrategy.eachPlugin {
+        if (requested.id.id == 'com.github.ben-manes.versions') {
+            useVersion "${benManesVersion}"
+        }
+    }
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+
+rootProject.name = 'conf-reloader'

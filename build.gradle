@@ -1,17 +1,20 @@
 plugins {
     id 'application'
     id 'java'
+    id 'com.github.ben-manes.versions'
 }
+
+apply from: 'versions.gradle'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'ch.qos.logback:logback-core:1.5.6'
-    implementation 'ch.qos.logback:logback-classic:1.5.6'
-    implementation 'org.slf4j:slf4j-api:2.0.13'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    implementation "ch.qos.logback:logback-core:$logbackVersion"
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "org.slf4j:slf4j-api:$slf4jApiVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterApiVersion"
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
@@ -40,4 +43,48 @@ sourceSets {
 
 test {
     useJUnitPlatform()
+}
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
+tasks.named('dependencyUpdates').configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version)
+    }
+}
+
+tasks.register('lineCount') {
+    doLast {
+        def fileTypes = ['java', 'groovy', 'kt']
+        def linesSummary = [:]
+
+        fileTypes.each { type ->
+            linesSummary[type] = countLines(type)
+        }
+
+        linesSummary.each { type, stats ->
+            if (stats.totalLines > 0) {
+                println "${type.toUpperCase()} Lines of Code: ${stats.totalLines} (${stats.totalNonEmptyLines} non-empty)"
+            }
+        }
+
+        println "Total Lines of Code: ${linesSummary.collect { it.value.totalLines }.sum()} (${linesSummary.collect { it.value.totalNonEmptyLines }.sum()} non-empty)"
+    }
+}
+
+def countLines(String fileType) {
+    def totalLines = 0
+    def totalNonEmptyLines = 0
+
+    fileTree('src').include("**/*.$fileType").each { File file ->
+        def lines = file.readLines()
+        totalLines += lines.size()
+        totalNonEmptyLines += lines.count { it.trim() != '' }
+    }
+
+    return [totalLines: totalLines, totalNonEmptyLines: totalNonEmptyLines]
 }
