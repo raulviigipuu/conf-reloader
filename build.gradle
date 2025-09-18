@@ -1,20 +1,23 @@
 plugins {
     id 'application'
     id 'java'
-    id 'com.github.ben-manes.versions'
+    id 'com.github.ben-manes.versions' version '0.52.0'
 }
-
-apply from: 'versions.gradle'
 
 repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 dependencies {
-    implementation "ch.qos.logback:logback-core:$logbackVersion"
-    implementation "ch.qos.logback:logback-classic:$logbackVersion"
-    implementation "org.slf4j:slf4j-api:$slf4jApiVersion"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterApiVersion"
+    implementation 'ch.qos.logback:logback-core:1.5.18'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.13.4'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 

@@ -1,6 +1,0 @@
-ext {
-    logbackVersion = '1.5.7'
-    slf4jApiVersion = '2.0.16'
-    junitJupiterApiVersion = '5.11.0'
-    benManesVersion = '0.51.0'
-}
