@@ -14,8 +14,8 @@ java {
 }
 
 dependencies {
-    implementation 'ch.qos.logback:logback-core:1.6.1'
-    implementation 'ch.qos.logback:logback-classic:1.6.1'
+    implementation 'ch.qos.logback:logback-core:1.6.2'
+    implementation 'ch.qos.logback:logback-classic:1.6.2'
     implementation 'org.slf4j:slf4j-api:2.0.18'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:6.1.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
